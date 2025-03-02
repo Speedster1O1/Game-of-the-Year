@@ -15,6 +15,7 @@ public class Platform : MonoBehaviour
         platform.position = Vector2.MoveTowards(platform.position, target, speed * Time.deltaTime);
         float distance = (target - (Vector2)platform.position).magnitude;
         if (distance <= 0.1f) { direction *= -1; }
+
     }
 
     Vector2 currentMovementTarget()
@@ -34,12 +35,18 @@ public class Platform : MonoBehaviour
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
-        collision.transform.SetParent(transform);
+        if(collision.gameObject.CompareTag("Player"))
+        {
+            collision.gameObject.transform.SetParent(transform);
+            
+        }
     }
 
-    private void OnCollisionExit2D(Collision2D collision)
+    private void OnCollisisonExit2D(Collision2D collision)
     {
-        collision.transform.SetParent(null);
+        
+        collision.gameObject.transform.SetParent(null);
+       
     }
 }
 

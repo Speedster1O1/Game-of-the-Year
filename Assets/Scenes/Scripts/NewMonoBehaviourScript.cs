@@ -9,11 +9,12 @@ public class PlayerBehavior : MonoBehaviour
     public float jumpPower;
     public float walkSpeed;
 
+    Rigidbody2D rb;
+
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
-        jumpPower = 5;
-        walkSpeed = 5;
+        rb = GetComponent<Rigidbody2D>();
     }
 
     // Update is called once per frame
@@ -21,37 +22,27 @@ public class PlayerBehavior : MonoBehaviour
     {
         horizontalInput = Input.GetAxis("Horizontal") * walkSpeed;
 
-        if (Input.GetKeyDown(KeyCode.W) || Input.GetKeyDown(KeyCode.Space))
+        if ((Input.GetKeyDown(KeyCode.W) || Input.GetKeyDown(KeyCode.Space)) && isGrounded)
         {
-            jumpKeyPressed = true;
+            Jump();
         }
     }
 
     void OnCollisionEnter2D(Collision2D collision)
     {
-        if (collision.gameObject.layer == 3)
-        {
-            isGrounded = true;
-            Debug.Log("Is Grounded");
-        }
-
-
+        isGrounded = true;
+        Debug.Log("Is Grounded");
     }
 
     void OnCollisionExit2D(Collision2D collision)
     {
-        if (collision.gameObject.layer == 3)
-        {
-            isGrounded = false;
-            Debug.Log("In Air");
-        }
-
-
+        isGrounded = false;
+        Debug.Log("In Air");
     }
 
     void FixedUpdate()
     {
-        GetComponent<Rigidbody2D>().linearVelocity = new Vector2(horizontalInput, GetComponent<Rigidbody2D>().linearVelocity.y);
+        rb.linearVelocity = new Vector2(horizontalInput, GetComponent<Rigidbody2D>().linearVelocity.y);
         if (jumpKeyPressed)
         {
             if (!isGrounded)
@@ -60,8 +51,14 @@ public class PlayerBehavior : MonoBehaviour
                 Debug.Log("Can't Jump");
                 return;
             }
-            GetComponent<Rigidbody2D>().AddForce(Vector2.up * jumpPower, ForceMode2D.Impulse);
+            rb.AddForce(Vector2.up * jumpPower, ForceMode2D.Impulse);
             jumpKeyPressed = false;
         }
+    }
+
+    void Jump()
+    {
+        rb.AddForce(Vector2.up*jumpPower, ForceMode2D.Impulse);
+        isGrounded = false;
     }
 }
