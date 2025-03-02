@@ -164,6 +164,18 @@ PrefabInstance:
       propertyPath: m_TagString
       value: Moving Platform
       objectReference: {fileID: 0}
+    - target: {fileID: 6127516775880277465, guid: dfbf9268f9a5ddc4da66f75fa9712a39, type: 3}
+      propertyPath: m_Color.b
+      value: 0.13962269
+      objectReference: {fileID: 0}
+    - target: {fileID: 6127516775880277465, guid: dfbf9268f9a5ddc4da66f75fa9712a39, type: 3}
+      propertyPath: m_Color.g
+      value: 0.12251929
+      objectReference: {fileID: 0}
+    - target: {fileID: 6127516775880277465, guid: dfbf9268f9a5ddc4da66f75fa9712a39, type: 3}
+      propertyPath: m_Color.r
+      value: 0.11564974
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects:
     - {fileID: 4718532295360358264, guid: dfbf9268f9a5ddc4da66f75fa9712a39, type: 3}

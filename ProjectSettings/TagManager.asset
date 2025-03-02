@@ -6,6 +6,10 @@ TagManager:
   tags:
   - Static Platform
   - Moving Platform
+  - Level
+  - Moving Level
+  - Stick
+  - Kill Plane
   layers:
   - Default
   - TransparentFX
