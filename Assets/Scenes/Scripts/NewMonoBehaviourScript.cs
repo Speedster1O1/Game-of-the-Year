@@ -31,13 +31,13 @@ public class PlayerBehavior : MonoBehaviour
     void OnCollisionEnter2D(Collision2D collision)
     {
         isGrounded = true;
-        Debug.Log("Is Grounded");
+        
     }
 
     void OnCollisionExit2D(Collision2D collision)
     {
         isGrounded = false;
-        Debug.Log("In Air");
+        
     }
 
     void FixedUpdate()

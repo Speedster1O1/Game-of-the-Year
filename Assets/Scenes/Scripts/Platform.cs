@@ -38,14 +38,21 @@ public class Platform : MonoBehaviour
         if(collision.gameObject.CompareTag("Player"))
         {
             collision.gameObject.transform.SetParent(transform);
+            Debug.Log("Parent Enabled");
             
         }
     }
 
-    private void OnCollisisonExit2D(Collision2D collision)
+    private void OnCollisionExit2D(Collision2D collision)
     {
+
+        if (collision.gameObject.CompareTag("Player"))
+        {
+            collision.gameObject.transform.SetParent(null);
+            Debug.Log("Parent Disabled");
+
+        }
         
-        collision.gameObject.transform.SetParent(null);
        
     }
 }

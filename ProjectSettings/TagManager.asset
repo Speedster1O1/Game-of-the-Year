@@ -4,8 +4,8 @@
 TagManager:
   serializedVersion: 3
   tags:
-  - Level
-  - Moving Level
+  - Static Platform
+  - Moving Platform
   layers:
   - Default
   - TransparentFX
